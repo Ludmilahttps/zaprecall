@@ -1,20 +1,10 @@
+import Cards from "./Cards"
+import Buttons from "./Buttons"
+
 export default function Section() {
 
-    const cards = [
-        {
-            quest: "Loki.Oficial",
-            answer: "loki2",
-            status: "flashcard-closed"
-        },
-        {
-            quest: "Loki.Oficial",
-            answer: "loki2",
-            status: "flashcard-open"
-        },
-    ];
-
-    const cardsRender = cards.map((card) => {
-        return <CardPost quest={card.quest} answer={card.answer} status={card.status}/>
+    const cardsRender = Cards.map((card) => {
+        return <CardPost quest={card.quest} answer={card.answer}/>
     })
 
     return (
@@ -28,7 +18,7 @@ function CardPost(props) {
 
     return (
         <>
-            <div data-test="flashcard" class={`flashcard ${props.status}`}>
+            <div data-test="flashcard" className={`flashcard`}>
                 <p data-test="flashcard-txt">{props.answer}</p>
                 <button data-test="play-btn"></button>
             </div>
