@@ -1,30 +1,29 @@
-import styled from "styled-components";
 import React from 'react'
+import { useState } from 'react';
 import Footer from "./components/Footer"
 import Header from "./components/Header"
 import Section from "./components/Section"
 
-function App() {
-  const [aux, setAux] = React.useState(0)
-  const[icon, setIcon] = React.useState('teste')
+export default function App() {
+  const [aux, setAux] = useState([]);
+  const [done, setDone] = useState(0);
+  const [error, setError] = useState(false);
 
   return (
     <div className="screen-container">
       <Header/>
       <Section 
-        aux={aux} 
+        done={done} 
         setAux={setAux} 
-        icon={icon} 
-        setIcon={setIcon}
+        aux={aux} 
+        setDone={setDone} 
+        setError={setError}        
       />
       <Footer 
+        done={done} 
         aux={aux} 
-        setAux={setAux} 
-        icon={icon} 
-        setIcon={setIcon}
+        error={error} 
       />
     </div>
   );
 }
-
-export default App;
