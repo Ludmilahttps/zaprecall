@@ -1,16 +1,17 @@
 import Cards from "./Cards"
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 function Footer(props) {
     return (
         <Bar data-teste="footer">
             {props.done}/{Cards.length} Completed
         </Bar>
-    );
+    )
 }
-export default Footer;
+export default Footer
 
-const Bar = styled.div`
+const Bar = styled.div
+`
     position: fixed;
     bottom: 0;
     left: 0;

@@ -1,8 +1,8 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState } from 'react'
 import Cards from "./Cards"
-import styled from 'styled-components';
-import Backface from './Backface';
+import styled from 'styled-components'
+import Backface from './Backface'
 
 
 export default function Section({ done, aux, setDone, setAux, setError }) {
@@ -29,12 +29,12 @@ export default function Section({ done, aux, setDone, setAux, setError }) {
 
 function CardPost(props) {
 
-    const [clicked, setClicked] = useState(false);
-    const [turn, setTurn] = useState(false);
-    const [status, setStatus] = useState("none");
-    const [result, setResult] = useState();
-    const colors = { zap: "#2fbe34", forgotten: "#ff3030", partial: "#FF922E" };
-    const playable = status === "none";
+    const [clicked, setClicked] = useState(false)
+    const [turn, setTurn] = useState(false)
+    const [status, setStatus] = useState("none")
+    const [result, setResult] = useState()
+    const colors = { zap: "#2fbe34", forgotten: "#ff3030", partial: "#FF922E" }
+    const playable = status === "none"
 
     return (
         <Flashcard data-test="flashcard" clicked={clicked ? 1 : 0}>
@@ -66,10 +66,11 @@ function CardPost(props) {
                 />
             </BackFaceDiv>
         </Flashcard>
-    );
+    )
 }
 
-const Table = styled.div`
+const Table = styled.div
+`
     width: 100%;
     height: 100%;
     display: flex;
@@ -79,7 +80,8 @@ const Table = styled.div`
     justify-content: space-between;
 `
 
-const Flashcard = styled.div`
+const Flashcard = styled.div
+`
     width: 80%;
     min-height: ${props => props.clicked ? "120px" : "65px"};
     background: ${props => props.clicked ? "transparent" : "#fff"};
@@ -90,9 +92,10 @@ const Flashcard = styled.div`
     position: relative;
     margin: 10px 0;
     box-sizing: border-box;
-`;
+`
 
-const FrontFaceDiv= styled.div`
+const FrontFaceDiv= styled.div
+`
     background: ${props => props.clicked ? "#ffffd5" : "#fff"};
     transform: ${props => props.turn ? "rotateY(180deg)" : "rotateY(0deg)"};
     position: absolute;
@@ -104,9 +107,10 @@ const FrontFaceDiv= styled.div`
     transform-style: preserve-3d;
     backface-visibility: hidden;
     box-sizing: border-box;
-`;
+`
 
-const BackFaceDiv = styled.div`
+const BackFaceDiv = styled.div
+`
     position: absolute;
     width: 100%;
     min-height: 100%;
@@ -118,9 +122,10 @@ const BackFaceDiv = styled.div`
     transform: ${props => props.turn ? "rotateY(0deg)" : "rotateY(180deg)"};
     backface-visibility: hidden;
     box-sizing: border-box;
-`;
+`
 
-const Question = styled.div`
+const Question = styled.div
+`
     display: ${props => (props.clicked ? 'none' : 'flex')};
     width: 100%;
     min-height: 100%;
@@ -145,9 +150,10 @@ const Question = styled.div`
     {
         cursor: pointer;
     }
-`;
+`
 
-const Front = styled.div`
+const Front = styled.div
+`
     width: 100%;
     min-height: 100%;
     box-sizing: border-box;
@@ -158,13 +164,14 @@ const Front = styled.div`
         font-size: 18px;
         margin: 15px;
     }
-`;
+`
 
-const Turn = styled.img`
+const Turn = styled.img
+`
     position: absolute;
     bottom: 10px;
     right: 10px;
     width: 30px;
     cursor: pointer;
-`;
+`
 
