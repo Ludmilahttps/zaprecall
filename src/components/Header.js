@@ -2,7 +2,7 @@ function Header() {
     return (
         <header>
             <img src="assets/logo.png" alt="Logo"></img>
-            <h1>ZapRecall</h1>
+            <h1 onClick={() => { window.location.reload(false)}}>ZapRecall</h1>
         </header>
     );
   }

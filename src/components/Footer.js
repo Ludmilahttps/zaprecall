@@ -22,4 +22,10 @@ const Bar = styled.div`
     justify-content: center;
     align-items: center;
     padding: 20px;
+
+    font-family: 'Recursive';
+    font-weight: 400;
+    font-size: 18px;
+    color: #333333;
+
 `;

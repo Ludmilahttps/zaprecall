@@ -29,6 +29,7 @@ header h1 {
     line-height: 45px;
     color: #FFFFFF;
     margin-left: 20px;
+    cursor: pointer;
 }
 
 footer {

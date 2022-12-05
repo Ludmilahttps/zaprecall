@@ -7,7 +7,9 @@ export default function Frontface(props) {
         props.setAux([...props.aux, aux]);
         props.setResult(aux);
         props.setStatus("zap");
-        reset();
+        props.setDone(props.done + 1);
+        props.setTurn(false);
+        props.setClicked(false);
     }
     function forgotten() {
         const aux = <img data-test="no-icon" src="assets/icone_erro.png" alt="no" />;
@@ -15,16 +17,15 @@ export default function Frontface(props) {
         props.setAux([...props.aux, aux]);
         props.setResult(aux);
         props.setStatus("forgotten");
-        reset();
+        props.setDone(props.done + 1);
+        props.setTurn(false);
+        props.setClicked(false);
     }
     function partial() {
         const aux = <img data-test="partial-icon" src="assets/icone_quase.png" alt="partial" />;
         props.setAux([...props.aux, aux]);
         props.setResult(aux);
         props.setStatus("partial");
-        reset();
-    }
-    function reset() {
         props.setDone(props.done + 1);
         props.setTurn(false);
         props.setClicked(false);

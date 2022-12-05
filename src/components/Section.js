@@ -33,18 +33,15 @@ function CardPost(props) {
     const [turn, setTurn] = useState(false);
     const [status, setStatus] = useState("none");
     const [result, setResult] = useState();
-
     const colors = { zap: "#2fbe34", forgotten: "#ff3030", partial: "#FF922E" };
     const playable = status === "none";
-    const textColor = colors[status];
-    const playButton = <img data-test="play-btn" onClick={() => setClicked(!clicked)} src="assets/seta_play.png" alt="play" />;
 
     return (
         <Flashcard data-test="flashcard" clicked={clicked ? 1 : 0}>
             <FrontFaceDiv clicked={clicked ? 1 : 0} turn={turn ? 1 : 0}>
-                <Question textColor={textColor} status={playable ? 0 : 1} clicked={clicked ? 1 : 0}>
+                <Question textColor={colors[status]} status={playable ? 0 : 1} clicked={clicked ? 1 : 0}>
                     <h1 data-test="flashcard-text">Question {props.num}</h1>
-                    {playable ? playButton : result}
+                    {playable ? <img data-test="play-btn" onClick={() => setClicked(!clicked)} src="assets/seta_play.png" alt="play" /> : result}
                 </Question>
                 <Front clicked={clicked ? 1 : 0}>
                     <p data-test="flashcard-text">{props.quest}</p>
@@ -143,7 +140,10 @@ const Question = styled.div`
         font-weight: 700;
         font-size: 16px;
         line-height: 19px;
-        
+    }
+    > img
+    {
+        cursor: pointer;
     }
 `;
 
@@ -165,5 +165,6 @@ const Turn = styled.img`
     bottom: 10px;
     right: 10px;
     width: 30px;
+    cursor: pointer;
 `;
 
