@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 function Footer(props) {
     return (
-        <Bar data-teste="footr">
+        <Bar data-teste="footer">
             {props.done}/{Cards.length} Completed
         </Bar>
     );
