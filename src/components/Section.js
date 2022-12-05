@@ -84,7 +84,7 @@ const Flashcard = styled.div
 `
     width: 80%;
     min-height: ${props => props.clicked ? "120px" : "65px"};
-    background: ${props => props.clicked ? "transparent" : "#fff"};
+    background: ${props => props.clicked ? "#ffffd5" : "#fff"};
     border-radius: 5px;
     transition: all 0.5s;
     transform-style: preserve-3d;
