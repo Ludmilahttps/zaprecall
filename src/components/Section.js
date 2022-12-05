@@ -17,13 +17,13 @@ export default function Section({ done, aux, setDone, setAux, setError }) {
             done={done}
             setDone={setDone}
             setAux={setAux}
-            setError={setError}/>
+            setError={setError} />
     })
 
     return (
-        <section>
+        <Table>
             {cardsRender}
-        </section>
+        </Table>
     );
 }
 
@@ -40,16 +40,16 @@ function CardPost(props) {
     const playButton = <img data-test="play-btn" onClick={() => setClicked(!clicked)} src="assets/seta_play.png" alt="play" />;
 
     return (
-        <FlashcardDiv>
+        <Flashcard data-test="flashcard" clicked={clicked ? 1 : 0}>
             <FrontFaceDiv clicked={clicked ? 1 : 0} turn={turn ? 1 : 0}>
-                <QuestionDiv textColor={textColor} status={playable ? 0 : 1} clicked={clicked ? 1 : 0}>
+                <Question textColor={textColor} status={playable ? 0 : 1} clicked={clicked ? 1 : 0}>
                     <h1 data-test="flashcard-text">Question {props.num}</h1>
                     {playable ? playButton : result}
-                </QuestionDiv>
-                <FrontDiv clicked={clicked ? 1 : 0}>
+                </Question>
+                <Front clicked={clicked ? 1 : 0}>
                     <p data-test="flashcard-text">{props.quest}</p>
                     <Turn data-test="turn-btn" onClick={() => setTurn(!turn)} src="assets/seta_virar.png" alt="Virar" />
-                </FrontDiv>
+                </Front>
             </FrontFaceDiv>
 
             <BackFaceDiv clicked={clicked ? 1 : 0} turn={turn ? 1 : 0}>
@@ -68,13 +68,23 @@ function CardPost(props) {
                     setError={props.setError}
                 />
             </BackFaceDiv>
-        </FlashcardDiv>
+        </Flashcard>
     );
 }
 
-const FlashcardDiv = styled.div`
+const Table = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: space-between;
+`
+
+const Flashcard = styled.div`
     width: 80%;
-    min-height: ${props => props.clicked ? "140px" : "65px"};
+    min-height: ${props => props.clicked ? "120px" : "65px"};
     background: ${props => props.clicked ? "transparent" : "#fff"};
     border-radius: 5px;
     transition: all 0.5s;
@@ -82,25 +92,27 @@ const FlashcardDiv = styled.div`
     backface-visibility: hidden;
     position: relative;
     margin: 10px 0;
+    box-sizing: border-box;
 `;
 
-const FrontFaceDiv = styled.div`
+const FrontFaceDiv= styled.div`
+    background: ${props => props.clicked ? "#ffffd5" : "#fff"};
+    transform: ${props => props.turn ? "rotateY(180deg)" : "rotateY(0deg)"};
     position: absolute;
     width: 100%;
-    height: 100%;
-    background: ${props => props.clicked ? "#ffffd5" : "#fff"};
+    min-height: 100%;
     border-radius: 5px;
     box-shadow: 0px 4px 5px rgba(0,0,0,0.15);
     transition: all 0.5s;
     transform-style: preserve-3d;
-    transform: ${props => props.turn ? "rotateY(180deg)" : "rotateY(0deg)"};
     backface-visibility: hidden;
+    box-sizing: border-box;
 `;
 
 const BackFaceDiv = styled.div`
     position: absolute;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     background: #ffffd5;
     border-radius: 5px;
     box-shadow: 0px 4px 5px rgba(0,0,0,0.15);
@@ -108,31 +120,40 @@ const BackFaceDiv = styled.div`
     transform-style: preserve-3d;
     transform: ${props => props.turn ? "rotateY(0deg)" : "rotateY(180deg)"};
     backface-visibility: hidden;
+    box-sizing: border-box;
 `;
 
-const QuestionDiv = styled.div`
-    width: 100%;
-    height: 100%;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 15px;
+const Question = styled.div`
     display: ${props => (props.clicked ? 'none' : 'flex')};
-    > h1 {
-        font-size: 16px;
-        font-family: 'Recursive', sans-serif;
-        font-weight: 700;
-        line-height: 19px;
+    width: 100%;
+    min-height: 100%;
+    background-color: #FFFFFF;
+    padding: 21px;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    > h1 
+    {    
         text-decoration: ${props => props.status ? 'line-through' : 'none'};
-        text-decoration-thickness: 2px; 
         color: ${props => props.status ? props.textColor : "#000"};
+        font-family: 'Recursive';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        
     }
 `;
 
-const FrontDiv = styled.div`
+const Front = styled.div`
     width: 100%;
-    height: 100%;
+    min-height: 100%;
+    box-sizing: border-box;
     display: ${props => (props.clicked ? 'flex' : 'none')};
-    > p{
+    > p
+    {
         font-family: 'Recursive', sans-serif;
         font-size: 18px;
         margin: 15px;
@@ -145,3 +166,4 @@ const Turn = styled.img`
     right: 10px;
     width: 30px;
 `;
+

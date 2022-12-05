@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import React from 'react'
 import { useState } from 'react';
 import Footer from "./components/Footer"
@@ -11,18 +12,18 @@ export default function App() {
 
   return (
     <div className="screen-container">
-      <Header/>
-      <Section 
-        done={done} 
-        setAux={setAux} 
-        aux={aux} 
-        setDone={setDone} 
-        setError={setError}        
+      <Header />
+      <Section
+        done={done}
+        setAux={setAux}
+        aux={aux}
+        setDone={setDone}
+        setError={setError}
       />
-      <Footer 
-        done={done} 
-        aux={aux} 
-        error={error} 
+      <Footer
+        done={done}
+        aux={aux}
+        error={error}
       />
     </div>
   );

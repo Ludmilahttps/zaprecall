@@ -34,7 +34,7 @@ export default function Frontface(props) {
         <BackDiv clicked={props.clicked ? 1 : 0}>
             <TextDiv data-test="flashcard-text">{props.answer}</TextDiv>
             <ButtonsDiv>
-                <Button data-test="no-btn" onClick={forgotten} color="#ff3030">forgotten</Button>
+                <Button data-test="no-btn" onClick={forgotten} color="#ff3030">Forgotten</Button>
                 <Button data-test="partial-btn" onClick={partial} color="#FF922E">Partial</Button>
                 <Button data-test="zap-btn" onClick={zap} color="#2fbe34">Zap!</Button>
             </ButtonsDiv>
@@ -48,7 +48,8 @@ const BackDiv = styled.div`
     display: ${props => (props.clicked ? 'flex' : 'none')};
     flex-direction: column;
     justify-content: space-evenly;
-    margin: 0;
+    align-items: center;
+    margin: 0 auto;
     padding: 15px;
 `;
 
@@ -57,13 +58,15 @@ const TextDiv = styled.div`
     font-family: 'Recursive', sans-serif;
     font-size: 18px;
     margin: 0 auto 10px auto;
+    margin-bottom: 22px;
 `;
 
 const ButtonsDiv = styled.div`
     display: flex;
-    width: 100%;
+    width: 90%;
     justify-content: space-between;
-    margin: 0 auto;
+    margin: auto;
+    box-sizing: border-box;
 `;
 
 const Button = styled.button`
